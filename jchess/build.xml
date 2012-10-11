@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jchess" default="build" basedir=".">
+
+	<property name="dir.base" value="." />
+	<property name="dir.main" value="${dir.base}/main" />
+	<property name="dir.main.src" value="${dir.main}/src" />
+	<property name="dir.lib" value="${dir.base}/lib" />
+	<property name="dir.build" value="${dir.base}/build" />
+	<property name="dir.build.sources" value="${dir.build}/sources" />
+	<property name="dir.build.classes" value="${dir.build}/classes" />
+	<property name="dir.build.javadoc" value="${dir.build}/javadoc" />
+	<property name="dir.release" value="${dir.base}/release" />
+
+	<target name="build">
+		<delete dir="${dir.build}" />
+		<delete dir="${dir.release}" />
+
+		<mkdir dir="${dir.build}" />
+
+		<mkdir dir="${dir.build.sources}" />
+		<copy todir="${dir.build.sources}">
+			<fileset dir="${dir.main.src}">
+				<include name="**/*.java" />
+			</fileset>
+		</copy>
+
+		<path id="lib.classpath">
+			<fileset dir="${dir.lib}">
+				<include name="**/*.jar" />
+			</fileset>
+		</path>
+
+		<mkdir dir="${dir.build.classes}" />
+		<javac destdir="${dir.build.classes}" classpathref="lib.classpath" encoding="Windows-31J">
+			<src path="${dir.build.sources}" />
+		</javac>
+
+		<mkdir dir="${dir.build.javadoc}" />
+		<javadoc destdir="${dir.build.javadoc}" classpathref="lib.classpath" encoding="Windows-31J" docencoding="Windows-31J" charset="Shift_JIS">
+			<fileset dir="${dir.build.sources}">
+				<include name="**/*.java" />
+			</fileset>
+		</javadoc>
+
+		<jar basedir="${dir.build.sources}" jarfile="${dir.release}/jchess-1.0.0-sources.jar" />
+		<jar basedir="${dir.build.classes}" jarfile="${dir.release}/jchess-1.0.0.jar" />
+		<jar basedir="${dir.build.javadoc}" jarfile="${dir.release}/jchess-1.0.0-javadoc.jar" />
+
+		<echo>success!!</echo>
+	</target>
+</project>
