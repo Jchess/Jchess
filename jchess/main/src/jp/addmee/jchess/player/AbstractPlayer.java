@@ -180,6 +180,7 @@ public abstract class AbstractPlayer implements Player {
 	// OpponentStock
 
 	public void print() {
+		int no;
 		List<ChessmenEntity> chessmens = jchess.getBoard().getChessmens();
 
 		String crlf = "\n";
@@ -226,10 +227,13 @@ public abstract class AbstractPlayer implements Player {
 		s.append("„¤„Ÿ„Ÿ„Ÿ„¨„Ÿ„Ÿ„Ÿ„¨„Ÿ„Ÿ„Ÿ„¨„Ÿ„Ÿ„Ÿ„¨„Ÿ„Ÿ„Ÿ„¨„Ÿ„Ÿ„Ÿ„¨„Ÿ„Ÿ„Ÿ„¨„Ÿ„Ÿ„Ÿ„¨„Ÿ„Ÿ„Ÿ„£").append(crlf);
 		s.append("Ž©•ª").append(crlf);
 		s.append(" [");
-		for (ChessmenEntity c : chessmens) {
-			if (c.isPlayer() && !c.isBoard()) {
-				s.append(c.getType().getCode());
+		no = 1;
+		for (ChessmenEntity c : getMyStockChessmens()) {
+			if (1 != no) {
+				s.append(", ");
 			}
+			s.append(no + ":" + c.getType().getCode());
+			no++;
 		}
 		s.append("]").append(crlf);
 

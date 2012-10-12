@@ -3,6 +3,7 @@ package jp.addmee.jchess;
 import jp.addmee.jchess.command.Command;
 import jp.addmee.jchess.entity.JchessEntity;
 import jp.addmee.jchess.exception.CommandException;
+import jp.addmee.jchess.player.CUIPlayer;
 import jp.addmee.jchess.player.Player;
 
 /**
@@ -57,14 +58,16 @@ public final class Jchess {
 	 * 初期化処理を行う。
 	 */
 	public void initialize() {
-
+		player1.initialize();
+		player2.initialize();
 	}
 
 	/**
 	 * 解放処理を行う。
 	 */
 	public void destroy() {
-
+		player1.destroy();
+		player2.destroy();
 	}
 
 	/**
@@ -100,4 +103,12 @@ public final class Jchess {
 
 	}
 
+	public static void main(final String[] args) {
+		Jchess jchess = new Jchess();
+		jchess.setPlayer1(new CUIPlayer("プレイヤー1"));
+		jchess.setPlayer2(new CUIPlayer("プレイー茶ー2"));
+		jchess.initialize();
+		jchess.play();
+		jchess.destroy();
+	}
 }

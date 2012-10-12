@@ -298,6 +298,8 @@ public final class PositionEntity {
 	public PositionEntity(final String p) {
 		char c1 = p.charAt(0);
 		char c2 = p.charAt(1);
+		x = -1;
+		y = -1;
 		if ('1' == c1)
 			x = 8;
 		else if ('2' == c1)
@@ -478,6 +480,8 @@ public final class PositionEntity {
 	public PositionEntity(final char aCol, final char aRow) {
 		char c1 = aCol;
 		char c2 = aRow;
+		x = -1;
+		y = -1;
 		if ('1' == c1)
 			x = 8;
 		else if ('2' == c1)
