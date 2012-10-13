@@ -106,7 +106,7 @@ public final class Jchess {
 	public static void main(final String[] args) {
 		Jchess jchess = new Jchess();
 		jchess.setPlayer1(new CUIPlayer("プレイヤー1"));
-		jchess.setPlayer2(new CUIPlayer("プレイー茶ー2"));
+		jchess.setPlayer2(new CUIPlayer("プレイヤー2"));
 		jchess.initialize();
 		jchess.play();
 		jchess.destroy();
